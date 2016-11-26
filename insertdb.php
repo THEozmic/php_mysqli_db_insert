@@ -4,7 +4,7 @@
 	//usage: $result = insertdb($_POST, "users");
 	//       echo $result;
 	// or insertdb(array("column_name" => "column_data"), "table");
-		require "db_connect.php";
+		require_once "db_connect.php";
 	function insertdb($data, $table) {
 		$colums = "";
 		$colums_values = "";

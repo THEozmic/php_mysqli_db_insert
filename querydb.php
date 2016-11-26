@@ -1,13 +1,17 @@
 <?php
-	require "db_connect.php";
+	require_once "db_connect.php";
 
 	function querydb($query_build) {
 
     		$query = mysqli_query($GLOBALS['connect'], $query_build);
+    		$query_build = strtolower($query_build);
+    		if (strpos($query_build, 'delete') !== false) {
+    			return "Record Deleted";
+    		}
 
-    		if (!$query) {
+    		if ($query === FALSE) {
 			    printf("Error: %s\n", mysqli_error($GLOBALS['connect']));
-			    //exit();
+			    exit();
 			}
 
     		$n = 0;
